@@ -1,0 +1,45 @@
+﻿@model SurgeEd.ViewModels.DocumentDetailsViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Basic File Upload</h2>
+@using (Html.BeginForm("Index", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <label for="file">Upload Worksheet:</label><br/>
+    @Html.Label("Worksheet Title")@Html.TextBoxFor(model=>model.Title)
+    <input type="file" name="file" id="file" /><br><br>
+    <input type="submit" value="Upload File" />
+    <br><br>
+    @ViewBag.Message
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Label("Title")
+            </th>
+            <th>
+                @Html.Label("Upload Date")
+            </th>
+            <th>
+                @Html.Label("Upload User Id")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Documents)
+        {
+            <tr>
+                <td>
+
+                    @Html.ActionLink(item.Title, "FileDownLoad", "Document", new { @documentId = item.DocumentId }, null)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UploadDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UploadUserId)
+                </td></tr>
+                }
+              
+        </table>
+}
