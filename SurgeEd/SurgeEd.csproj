@@ -136,6 +136,7 @@
     <Compile Include="Models\MyStoreContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\DocumentDetailsViewModel.cs" />
+    <Compile Include="ViewModels\DocumentViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
